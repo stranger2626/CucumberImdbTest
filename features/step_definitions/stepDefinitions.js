@@ -27,6 +27,18 @@ var steps = function() {
     this.Then(/^I will wait a bit$/, function() {
         return ImdbBasic.wait(10000);
     });   
+    this.Then(/^I will go to my watchlist$/, function(){
+        return ImdbBasic.goToWatchlist();
+    });
+    this.Then(/^I will go to top rated movies$/, function(){
+        return ImdbBasic.goToTopRatedMovies();
+    });
+    this.Then(/^I will add some top rated movies to my watchlist$/, function(){
+        return ImdbBasic.addMovieToWatchlist('Pulp Fiction');
+    });
+    this.Then(/^I will log out$/, function(){
+        return ImdbBasic.logOut();
+    });
 };
 
 module.exports = steps;

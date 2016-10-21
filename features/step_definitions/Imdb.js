@@ -52,6 +52,26 @@ ImdbBasic = {
 			})
 		;}
 		return getTheNumber();
+	},
+	goToWatchlist: function(){
+		return element(by.linkText('Watchlist')).click();
+	},
+	goToTopRatedMovies: function(){
+		return element(by.linkText('Top Rated Movies')).click();
+	},
+	addMovieToWatchlist: function(MovieName){
+		var xpathString="//*[contains(text(),'";
+			xpathString=xpathString+MovieName+"')]"+"/../../td[5]/div/div";
+		
+		var SomeElement = browser.findElement(by.xpath(xpathString));
+		return browser.executeScript("arguments[0].click()",SomeElement);
+		//browser.actions().mouseMove(browser.findElement(by.xpath(xpathString))).click().perform();
+
+		//element(by.xpath(xpathString)).click();
+	},
+	logOut:function(){
+		return element(by.id('nblogout')).click();
 	}
 	};
 module.exports = ImdbBasic;
+

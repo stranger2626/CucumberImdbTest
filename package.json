@@ -1,0 +1,24 @@
+{
+  "name": "cucumberimdbtest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "config.js",
+  "dependencies": {
+    "chai-as-promised": "^6.0.0",
+    "chai": "^3.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stranger2626/CucumberImdbTest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stranger2626/CucumberImdbTest/issues"
+  },
+  "homepage": "https://github.com/stranger2626/CucumberImdbTest#readme"
+}

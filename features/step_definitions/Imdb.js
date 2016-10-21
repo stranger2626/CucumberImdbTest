@@ -46,9 +46,18 @@ ImdbBasic = {
 		var EC=protractor.ExpectedConditions;
 		browser.wait(EC.visibilityOf($('#star-rating-widget')),5000);
 		var getTheNumber=function(){
-			element(by.xpath('/html/body/div[1]/div/div[4]/div[5]/div[1]/div/div/div[2]/div[2]/div/div[1]/div[1]/div[1]/strong/span')).getText()
+			element(by.xpath("//*[@class='ratingValue']/strong/span")).getText()
 			.then(function(textvalue){
 				return expect(parseInt(textvalue)).to.be.above(5);
+			})
+		;}
+		return getTheNumber();
+	},
+	seeIfMovieHasGoodMetascore:function(){
+		var getTheNumber=function(){
+			element(by.xpath("//*[@class='metacriticScore score_favorable titleReviewBarSubItem']/span")).getText()
+			.then(function(textvalue){
+				return expect(parseInt(textvalue)).to.be.above(60);
 			})
 		;}
 		return getTheNumber();

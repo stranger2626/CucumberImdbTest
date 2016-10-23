@@ -4,8 +4,9 @@ Feature: Adding movies to watchlist
 
 Scenario: Login at imdb.com and add some movies to my watchlist
 	Given I am on the main page
-	Then I will go to my watchlist
-	Then I will go to top rated movies
-	Then I will add some top rated movies to my watchlist
-	Then I will log out
-	Then I will wait a bit
+	Then I go to my watchlist
+	Then I go to top rated movies
+	Then I add 'Pulp Fiction' to my watchlist
+	Then I go to my watchlist
+	Then I mark 'Pulp Fiction' as watched
+	Then I wait a bit

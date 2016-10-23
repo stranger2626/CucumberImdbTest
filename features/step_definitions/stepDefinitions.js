@@ -11,34 +11,37 @@ var steps = function() {
     	return ImdbBasic.getPage();
     });
 
-    this.When(/^I will log in with my info$/, function() {
-    	return ImdbBasic.login('stranger2626@gmail.com','RandomPassword');
+    this.When(/^I log in with login '([^"]*)' and password '([^"]*)'$/, function(login,password) {
+    	return ImdbBasic.login(login,password);
     });
 
-    this.Then(/^I will search for something$/, function() {
-        return ImdbBasic.search('Star Wars: The Force Awakens','Titles');
+    this.Then(/^I search for '([^"]*)' in the '([^"]*)' category$/, function(title,category) {
+        return ImdbBasic.search(title,category);
     });
-    this.Then(/^I will go to the movie page$/, function() {
-       return ImdbBasic.goToMoviePage('Star Wars: The Force Awakens');
+    this.Then(/^I go to '([^"]*)' page$/, function(MovieName) {
+       return ImdbBasic.goToMoviePage(MovieName);
     });
-    this.Then(/^I will see if the movie has a good rating$/, function(){
-        return ImdbBasic.seeIfMovieHasAGoodRating();
+    this.Then(/^I see if the movie has a better rating than '([^"]*)'$/, function(rating){
+        return ImdbBasic.seeIfMovieHasAGoodRating(rating);
     });
-    this.Then(/^I will wait a bit$/, function() {
+    this.Then(/^I wait a bit$/, function() {
         return ImdbBasic.wait(10000);
     });   
-    this.Then(/^I will go to my watchlist$/, function(){
+    this.Then(/^I go to my watchlist$/, function(){
         return ImdbBasic.goToWatchlist();
     });
-    this.Then(/^I will go to top rated movies$/, function(){
+    this.Then(/^I go to top rated movies$/, function(){
         return ImdbBasic.goToTopRatedMovies();
     });
-    this.Then(/^I will add some top rated movies to my watchlist$/, function(){
-        return ImdbBasic.addMovieToWatchlist('Pulp Fiction');
+    this.Then(/^Then I add '([^"]*)' to my watchlist$/, function(ItemName){
+        return ImdbBasic.addItemToWatchlist(ItemName);
     });
-    this.Then(/^I will log out$/, function(){
+    this.Then(/^I log out$/, function(){
         return ImdbBasic.logOut();
     });
+    this.Then(/^I see if the movie has a better tahan '([^"]*)' Metascore$/, function(rating){
+        return ImdbBasic.seeIfMovieHasGoodMetascore(rating);
+    })
 };
 
 module.exports = steps;

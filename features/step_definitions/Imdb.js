@@ -42,22 +42,24 @@ ImdbBasic = {
 		goToMoviePage: function(MovieName){
 		return element(by.linkText(MovieName)).click();
 	},
-	seeIfMovieHasAGoodRating: function(){
+	seeIfMovieHasAGoodRating: function(rating){
 		var EC=protractor.ExpectedConditions;
 		browser.wait(EC.visibilityOf($('#star-rating-widget')),5000);
+		rating=parseInt(rating);
 		var getTheNumber=function(){
 			element(by.xpath("//*[@class='ratingValue']/strong/span")).getText()
 			.then(function(textvalue){
-				return expect(parseInt(textvalue)).to.be.above(5);
+				return expect(parseInt(textvalue)).to.be.above(rating);
 			})
 		;}
 		return getTheNumber();
 	},
-	seeIfMovieHasGoodMetascore:function(){
+	seeIfMovieHasGoodMetascore:function(rating){
+		rating=parseInt(rating);
 		var getTheNumber=function(){
 			element(by.xpath("//*[@class='metacriticScore score_favorable titleReviewBarSubItem']/span")).getText()
 			.then(function(textvalue){
-				return expect(parseInt(textvalue)).to.be.above(60);
+				return expect(parseInt(textvalue)).to.be.above(rating);
 			})
 		;}
 		return getTheNumber();
@@ -68,18 +70,19 @@ ImdbBasic = {
 	goToTopRatedMovies: function(){
 		return element(by.linkText('Top Rated Movies')).click();
 	},
-	addMovieToWatchlist: function(MovieName){
+	addItemToWatchlist: function(ItemName){
 		var xpathString="//*[contains(text(),'";
-			xpathString=xpathString+MovieName+"')]"+"/../../td[5]/div/div";
+			xpathString=xpathString+ItemName+"')]"+"/../../td[5]/div/div";
 		
 		var SomeElement = browser.findElement(by.xpath(xpathString));
 		return browser.executeScript("arguments[0].click()",SomeElement);
-		//browser.actions().mouseMove(browser.findElement(by.xpath(xpathString))).click().perform();
-
-		//element(by.xpath(xpathString)).click();
+		browser.sleep(1000);
 	},
 	logOut:function(){
 		return element(by.id('nblogout')).click();
+	},
+	MarkAsWatched:function(ItemName){
+		return
 	}
 	};
 module.exports = ImdbBasic;

@@ -11,7 +11,7 @@ ImdbBasic = {
 			.then(function(){
 				return browser.wait(EC.visibilityOf($('.fixed')),15000);
 			})
-			.then(element(by.xpath('/html/body/div[1]/div/div[2]/div/div[1]/div/div/a[4]/span[2]')).click)
+			.then(element(by.xpath("//span[contains(text(),'Sign in with IMDb')]")).click)
 			.then(function(){
 				return browser.wait(EC.visibilityOf($('.a-spacing-small')),15000);
 			})
@@ -82,7 +82,9 @@ ImdbBasic = {
 		return element(by.id('nblogout')).click();
 	},
 	MarkAsWatched:function(ItemName){
-		return
+	var xpathString="//a[contains(text(),'";
+		xpathString=xpathString+ItemName+"')]"+"/../../../div[1]/div";
+		return browser.findElement(by.xpath(xpathString)).click();
 	}
 	};
 module.exports = ImdbBasic;

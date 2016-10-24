@@ -8,11 +8,11 @@ var steps = function() {
     browser.ignoreSynchronization = true;
     
     this.Given(/^I am on the main page$/, function () {
-    	return ImdbBasic.getPage();
+        return ImdbBasic.getPage();
     });
 
     this.When(/^I log in with login '([^"]*)' and password '([^"]*)'$/, function(login,password) {
-    	return ImdbBasic.login(login,password);
+        return ImdbBasic.login(login,password);
     });
 
     this.Then(/^I search for '([^"]*)' in the '([^"]*)' category$/, function(title,category) {
@@ -33,7 +33,7 @@ var steps = function() {
     this.Then(/^I go to top rated movies$/, function(){
         return ImdbBasic.goToTopRatedMovies();
     });
-    this.Then(/^Then I add '([^"]*)' to my watchlist$/, function(ItemName){
+    this.Then(/^I add '([^"]*)' to my watchlist$/, function(ItemName){
         return ImdbBasic.addItemToWatchlist(ItemName);
     });
     this.Then(/^I log out$/, function(){
@@ -41,6 +41,9 @@ var steps = function() {
     });
     this.Then(/^I see if the movie has a better tahan '([^"]*)' Metascore$/, function(rating){
         return ImdbBasic.seeIfMovieHasGoodMetascore(rating);
+    });
+    this.Then(/^I mark '([^"]*)' as watched$/, function(ItemName){
+        return ImdbBasic.MarkAsWatched(ItemName);
     })
 };
 

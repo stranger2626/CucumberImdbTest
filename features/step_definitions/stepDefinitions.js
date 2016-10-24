@@ -1,4 +1,5 @@
 var ImdbBasic = require('./Imdb.js');
+var ItemPage = require('./ItemPage.js');
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 
@@ -22,7 +23,7 @@ var steps = function() {
        return ImdbBasic.goToMoviePage(MovieName);
     });
     this.Then(/^I see if the movie has a better rating than '([^"]*)'$/, function(rating){
-        return ImdbBasic.seeIfMovieHasAGoodRating(rating);
+        return ItemPage.seeIfMovieHasAGoodRating(rating);
     });
     this.Then(/^I wait a bit$/, function() {
         return ImdbBasic.wait(10000);
@@ -40,7 +41,7 @@ var steps = function() {
         return ImdbBasic.logOut();
     });
     this.Then(/^I see if the movie has a better tahan '([^"]*)' Metascore$/, function(rating){
-        return ImdbBasic.seeIfMovieHasGoodMetascore(rating);
+        return ItemPage.seeIfMovieHasGoodMetascore(rating);
     });
     this.Then(/^I mark '([^"]*)' as watched$/, function(ItemName){
         return ImdbBasic.MarkAsWatched(ItemName);

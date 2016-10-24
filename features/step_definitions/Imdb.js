@@ -1,5 +1,4 @@
-//var chai = require('chai');
-//var chaiAsPromised = require('chai-as-promised');
+
 ImdbBasic = {
 	getPage: function() {
 		return browser.get('http://imdb.com');
@@ -42,28 +41,8 @@ ImdbBasic = {
 		goToMoviePage: function(MovieName){
 		return element(by.linkText(MovieName)).click();
 	},
-	seeIfMovieHasAGoodRating: function(rating){
-		var EC=protractor.ExpectedConditions;
-		browser.wait(EC.visibilityOf($('#star-rating-widget')),5000);
-		rating=parseInt(rating);
-		var getTheNumber=function(){
-			element(by.xpath("//*[@class='ratingValue']/strong/span")).getText()
-			.then(function(textvalue){
-				return expect(parseInt(textvalue)).to.be.above(rating);
-			})
-		;}
-		return getTheNumber();
-	},
-	seeIfMovieHasGoodMetascore:function(rating){
-		rating=parseInt(rating);
-		var getTheNumber=function(){
-			element(by.xpath("//*[@class='metacriticScore score_favorable titleReviewBarSubItem']/span")).getText()
-			.then(function(textvalue){
-				return expect(parseInt(textvalue)).to.be.above(rating);
-			})
-		;}
-		return getTheNumber();
-	},
+	
+	
 	goToWatchlist: function(){
 		return element(by.linkText('Watchlist')).click();
 	},

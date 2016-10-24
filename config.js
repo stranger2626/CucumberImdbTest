@@ -9,17 +9,31 @@ exports.config = {
 
   // path relative to the current config file
   frameworkPath: require.resolve('protractor-cucumber-framework'),
-  capabilities: {
-    'browserName': 'chrome',
-     chromeOptions : {
-            args: ['start-maximized','--disable-extensions']
-        }
-    },  
+  // capabilities: {
+  //   'browserName': 'chrome',
+     // chromeOptions : {
+     //        args: ['start-maximized','--disable-extensions']
+     //    }
+  //   },  
 
-  // Spec patterns are relative to this directory.
-  specs: [
-    'features/*.feature'
-  ],
+  // // Spec patterns are relative to this directory.
+  // specs: [
+  //   'features/*.feature'
+  // ],
+  multiCapabilities: [
+  {'browserName': 'chrome',
+   chromeOptions : {
+            args: ['start-maximized','--disable-extensions']
+        },
+  specs:['features/first.feature']
+  }, 
+  {'browserName': 'chrome',
+   chromeOptions : {
+            args: ['start-maximized','--disable-extensions']
+        },
+  specs:['features/second.feature']
+
+  }],
 
   cucumberOpts: {
     require: 'features/step_definitions/stepDefinitions.js'

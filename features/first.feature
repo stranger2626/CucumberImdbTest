@@ -3,11 +3,16 @@ Feature: Log in and search at imdb.com
     I can log in at imdb.com
     I can search
 
-Scenario: Login at imdb.com and search for something
-    Given I am on the main page
-    When I log in with login 'stranger2626@gmail.com' and password 'RandomPassword'
-    Then I search for 'Star Wars The Force Awakens' in the 'Titles' category
-    Then I go to 'Star Wars: The Force Awakens' page
-    Then I see if the movie has a better rating than '5'
-    Then I see if the movie has a better tahan '60' Metascore
-    Then I wait a bit
+Scenario Outline: Login at imdb.com and search for <Movie>
+    When I am on the main page
+    #When I log in with login 'stranger2626@gmail.com' and password 'RandomPassword'
+    Then I search for '<Movie>' in the 'Titles' category
+    Then I go to '<Movie>' page
+    Then I see if the movie has a better rating than '<rating>'
+    Then I see if the movie has a better tahan '<Metascore>' Metascore
+    #Then I wait a bit
+
+    Examples:
+            | Movie                        | rating | Metascore
+            | Star Wars: The Force Awakens | 5      |60
+            | Pulp Fiction                 | 4      |87

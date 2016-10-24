@@ -8,7 +8,7 @@ var steps = function() {
     this.setDefaultTimeout(60000);
     browser.ignoreSynchronization = true;
     
-    this.Given(/^I am on the main page$/, function () {
+    this.When(/^I am on the main page$/, function () {
         return ImdbBasic.getPage();
     });
 
@@ -23,10 +23,11 @@ var steps = function() {
        return ImdbBasic.goToMoviePage(MovieName);
     });
     this.Then(/^I see if the movie has a better rating than '([^"]*)'$/, function(rating){
+        browser.sleep(2000);
         return ItemPage.seeIfMovieHasAGoodRating(rating);
     });
     this.Then(/^I wait a bit$/, function() {
-        return ImdbBasic.wait(10000);
+        return ImdbBasic.wait(1000);
     });   
     this.Then(/^I go to my watchlist$/, function(){
         return ImdbBasic.goToWatchlist();

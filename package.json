@@ -1,21 +1,23 @@
 {
-  "name": "cucmberimdbtest",
+  "name": "cucumberimdbtest",
   "version": "1.0.0",
   "description": "",
   "main": "config.js",
+  "directories": {
+    "test": "tests"
+  },
   "dependencies": {
-    
+    "gulp": "^3.9.1",
+    "gulp-protractor": "^3.0.0",
+    "run-sequence": "^1.2.2"
   },
   "devDependencies": {
-    
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
-    "protractor-cucumber": "^0.1.8",
-    "protractor": "^4.0.9",
-    "protractor-cucumber-framework": "^0.6.0"
+    "protractor": "^4.0.9"
   },
   "scripts": {
-    "install": "node_modules\\.bin\\webdriver-manager update"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

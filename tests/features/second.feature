@@ -12,6 +12,7 @@ Scenario Outline: Login at imdb.com and add some movies to my watchlist and remo
 	Then I add '<SecondMovie>' to my watchlist
 	Then I go to my watchlist
 	Then I mark '<Movie>' as watched
+	Then I mark '<SecondMovie>' as watched
 	Then I logout
 
 	 Examples:

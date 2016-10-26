@@ -1,5 +1,4 @@
-var inherit = require('./inherit.js');
-var ImdbBasic = require('./Imdb.js');
+	var ImdbBasic = require('./Imdb.js');
 ItemPage={
 	seeIfMovieHasAGoodRating:function(rating){
 		var EC=protractor.ExpectedConditions;
@@ -27,5 +26,6 @@ ItemPage={
 		return getTheNumber();
 	}
 };
-inherit(ItemPage,ImdbBasic);
+Object.assign(ItemPage,ImdbBasic);
+
 module.exports=ItemPage;

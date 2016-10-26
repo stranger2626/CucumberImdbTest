@@ -1,5 +1,5 @@
 exports.config = {
-  seleniumAddress: 'http://localhost:4444/wd/hub',
+  //seleniumAddress: 'http://localhost:4444/wd/hub',
 
   getPageTimeout: 15000,
 
@@ -25,18 +25,18 @@ exports.config = {
    chromeOptions : {
             args: ['start-maximized','--disable-extensions']
         },
-  specs:['features/first.feature']
+  specs:['tests/features/first.feature']
   }, 
   {'browserName': 'chrome',
    chromeOptions : {
             args: ['start-maximized','--disable-extensions']
         },
-  specs:['features/second.feature']
+  specs:['tests/features/second.feature']
 
   }],
 
   cucumberOpts: {
-    require: 'features/step_definitions/stepDefinitions.js'
+    require: 'tests/features/step_definitions/stepDefinitions.js'
   },
   onPrepare : function() {
         var chai = require('chai');
@@ -44,4 +44,4 @@ exports.config = {
         expect = chai.expect;
         chai.use(chaiAsPromised);
 }
-};
+};  

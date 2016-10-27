@@ -1,5 +1,6 @@
-var ImdbBasic = require('./Imdb.js');
-var ItemPage = require('./ItemPage.js');
+var ImdbBasic = require('../Pages/Imdb.js');
+var ItemPage = require('../Pages/ItemPage.js');
+var WatchlistPage=require('../Pages/WatchlistPage.js');
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 
@@ -33,10 +34,10 @@ var steps = function() {
         return ImdbBasic.goToWatchlist();
     });
     this.Then(/^I go to top rated movies$/, function(){
-        return ImdbBasic.goToTopRatedMovies();
+        return WatchlistPage.goToTopRatedMovies();
     });
     this.Then(/^I add '([^"]*)' to my watchlist$/, function(ItemName){
-        return ImdbBasic.addItemToWatchlist(ItemName);
+        return WatchlistPage.addItemToWatchlist(ItemName);
     });
     this.Then(/^I logout$/, function(){
         return ImdbBasic.logOut();
@@ -45,7 +46,7 @@ var steps = function() {
         return ItemPage.seeIfMovieHasGoodMetascore(rating);
     });
     this.Then(/^I mark '([^"]*)' as watched$/, function(ItemName){
-        return ImdbBasic.MarkAsWatched(ItemName);
+        return WatchlistPage.MarkAsWatched(ItemName);
     })
 };
 

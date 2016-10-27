@@ -1,47 +1,29 @@
-exports.config = {
-  //seleniumAddress: 'http://localhost:4444/wd/hub',
+exports.config={
+    getPageTimeout: 10000,
+    allScriptsTimeout: 10000,
+     capabilities: {
+      'browserName': process.env.BROWSER||'chrome',
+       chromeOptions : {
+                args: [process.env.VIEW||'--window-size=1280,800']
+            }
 
-  getPageTimeout: 15000,
+     },
+    framework: 'custom',
+    frameworkPath: require.resolve('protractor-cucumber-framework'),
+    specs:['test/features/*.feature'],
+    cucumberOpts:{
+      require:[
+        'test/features/step_definitions/*.js'
+      ],
+            //tags:process.env.TAGS||['@important'],
+      format:'pretty'
+    },
 
-  setDefaultTimeout: 60000,
 
-  framework: 'custom',
-
-  // path relative to the current config file
-  frameworkPath: require.resolve('protractor-cucumber-framework'),
-  // capabilities: {
-  //   'browserName': 'chrome',
-     // chromeOptions : {
-     //        args: ['start-maximized','--disable-extensions']
-     //    }
-  //   },  
-
-  // // Spec patterns are relative to this directory.
-  // specs: [
-  //   'features/*.feature'
-  // ],
-  multiCapabilities: [
-  {'browserName': 'chrome',
-   chromeOptions : {
-            args: ['start-maximized','--disable-extensions']
-        },
-  specs:['tests/features/first.feature']
-  }, 
-  {'browserName': 'chrome',
-   chromeOptions : {
-            args: ['start-maximized','--disable-extensions']
-        },
-  specs:['tests/features/second.feature']
-
-  }],
-
-  cucumberOpts: {
-    require: 'tests/features/step_definitions/stepDefinitions.js'
-  },
-  onPrepare : function() {
-        var chai = require('chai');
-            chaiAsPromised = require('chai-as-promised');
-        expect = chai.expect;
-        chai.use(chaiAsPromised);
+  onPrepare:function(){
+    var chai=require('chai');
+      chaiAsPromised=require('chai-as-promised');
+      expect=chai.expect;
+      chai.use(chaiAsPromised);
 }
-};  
+};

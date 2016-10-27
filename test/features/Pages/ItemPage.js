@@ -27,5 +27,4 @@ ItemPage={
 	}
 };
 Object.assign(ItemPage,ImdbBasic);
-
 module.exports=ItemPage;

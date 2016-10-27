@@ -2,7 +2,7 @@ Feature: Log in and search at imdb.com
     As a user
     I can log in at imdb.com
     I can search
-
+    @first
     Scenario Outline: Login at imdb.com and search for <Movie>
         When I am on the main page
         When I log in with login '<Login>' and password '<Password>'

@@ -4,7 +4,7 @@ exports.config={
      capabilities: {
       'browserName': process.env.BROWSER||'chrome',
        chromeOptions : {
-                args: [process.env.VIEW||'--window-size=1280,800']
+                args:[process.env.VIEW]
             }
 
      },
@@ -12,10 +12,10 @@ exports.config={
     frameworkPath: require.resolve('protractor-cucumber-framework'),
     specs:['test/features/*.feature'],
     cucumberOpts:{
+      tags:process.env.TAGS,
       require:[
         'test/features/step_definitions/*.js'
       ],
-            //tags:process.env.TAGS||['@important'],
       format:'pretty'
     },
 

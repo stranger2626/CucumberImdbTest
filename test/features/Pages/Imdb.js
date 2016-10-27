@@ -54,7 +54,7 @@ ImdbBasic = {
 			var SomeElement = element(by.id('nblogout'));
 			return browser.executeScript("arguments[0].click()",SomeElement);
 		});
-	}
+	}	
 	};
 module.exports = ImdbBasic;
 

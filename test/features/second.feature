@@ -2,7 +2,7 @@ Feature: Adding movies to watchlist
 	As a user
 	I can add movies to my watchlist
 	I can remove movies from my watchlist
-
+@second
 Scenario Outline: Login at imdb.com and add some movies to my watchlist and remove them from watchlist
 	When I am on the main page
 	When I log in with login '<Login>' and password '<Password>'

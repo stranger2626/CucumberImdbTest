@@ -2,7 +2,7 @@ exports.config={
     getPageTimeout: 10000,
     allScriptsTimeout: 10000,
      capabilities: {
-      'browserName': process.env.BROWSER||'chrome',
+      'browserName': process.env.BROWSER,
        chromeOptions : {
                 args:[process.env.VIEW]
             }

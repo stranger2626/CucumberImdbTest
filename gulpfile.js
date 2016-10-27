@@ -9,9 +9,9 @@ var gulp = require('gulp'),
     gulp.task('cmd',function(){
     var promises=[];
     var f1 = function(browser,view,tags){
-        process.env.BROWSER=browser;
-        process.env.VIEW=view;
-        process.env.TAGS=tags;
+        process.env.BROWSER=browser||'chrome';
+        process.env.VIEW=view||'desktop';
+        process.env.TAGS=tags||'@first';
         return exec('gulp protractor')
             .then(function (results) {
                 console.log(results.stdout);

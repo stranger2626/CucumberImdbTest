@@ -8,10 +8,10 @@ var gulp = require('gulp'),
 
     gulp.task('cmd',function(){
     var promises=[];
-    var f1 = function(browser,view,tag){
+    var f1 = function(browser,view,tags){
         process.env.BROWSER=browser;
         process.env.VIEW=view;
-        process.env.TAGS=tag;
+        process.env.TAGS=tags;
         return exec('gulp protractor')
             .then(function (results) {
                 console.log(results.stdout);
@@ -20,7 +20,7 @@ var gulp = require('gulp'),
                 console.error('ERROR: ',err.stdout);
             });
     };
-    promises.push(f1(util.env.browser,util.env.view,util.env.tag));
+    promises.push(f1(util.env.browser,util.env.view,util.env.tags));
 
    return  Promise.all([promises]);
     

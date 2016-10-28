@@ -8,10 +8,11 @@ var gulp = require('gulp'),
 
     gulp.task('cmd',function(){
     var promises=[];
-    var f1 = function(browser,view,tags){
+    var f1 = function(browser,view,tags,multi){
         process.env.BROWSER=browser||'chrome';
         process.env.VIEW=view||'desktop';
         process.env.TAGS=tags||'@first';
+
         return exec('gulp protractor')
             .then(function (results) {
                 console.log(results.stdout);
@@ -38,8 +39,11 @@ gulp.task('protractor', function(){
     util.env.browser?process.env.BROWSER=util.env.browser:process.env.BROWSER;
     util.env.view?viewmodel=util.env.view:process.env.VIEW;
     switch(process.env.VIEW){
-             case "tablet":
-                  process.env.VIEW=view.tablet;
+             case "tabletP":
+                  process.env.VIEW=view.tabletP;
+             break;
+             case "tabletL":
+                  process.env.VIEW=view.tabletL;
              break;
              case "desktop":
                   process.env.VIEW=view.desktop;   

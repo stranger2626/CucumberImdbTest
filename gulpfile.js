@@ -2,17 +2,16 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     protractor = require('gulp-protractor').protractor,
     view=require('./test/profile/view.js'),
-    capabilities=require('./test/profile/capabilities.js'),
     util = require('gulp-util');
     var exec = require('child-process-promise').exec;
 
     gulp.task('cmd',function(){
     var promises=[];
-    var f1 = function(browser,view,tags,multi){
+    var f1 = function(browser,view,tags,config){
         process.env.BROWSER=browser||'chrome';
         process.env.VIEW=view||'desktop';
         process.env.TAGS=tags||'@first';
-
+        process.env.CONFIG=config||'config.js';
         return exec('gulp protractor')
             .then(function (results) {
                 console.log(results.stdout);
@@ -56,9 +55,10 @@ gulp.task('protractor', function(){
     console.log(process.env.BROWSER);
     console.log(process.env.VIEW);
     console.log(process.env.TAGS);
+    console.log(process.env.CONFIG);
     return gulp.src(["./src/test/*.js"])
     .pipe(protractor({
-        configFile: "config.js"
+        configFile: process.env.CONFIG
     }))
     .on('error', function(e) { throw e });
 });

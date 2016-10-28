@@ -20,7 +20,7 @@ var gulp = require('gulp'),
                 console.error('ERROR: ',err.stdout);
             });
     };
-    promises.push(f1(util.env.browser,util.env.view,util.env.tags));
+    promises.push(f1(util.env.browser,util.env.view,util.env.tags,util.env.config));
 
    return  Promise.all([promises]);
     
